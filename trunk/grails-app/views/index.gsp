@@ -85,20 +85,26 @@
 
 		</div>
 		<div id="pageBody">
-	        <h1>Welcome to Grails</h1>
-	        <p>Congratulations, you have successfully started your first Grails application! At the moment
-	        this is the default page, feel free to modify it to either redirect to a controller or display whatever
-	        content you may choose. Below is a list of controllers that are currently deployed in this application,
-	        click on each to execute its default action:</p>
+	        <h1>Welcome to HTML5 Demos</h1>
+	        <p>This Grails Application showcases the core functionality available today in mobile browses like Apple's Safari for iPhone and other webkit-based browsers. Click on the links below to access each demo page. For your convenience, all request headers are printed below, too.</p>
 
 	        <div id="controllerList" class="dialog">
-				<h2>Available Controllers:</h2>
+				<h2>Demo Pages</h2>
 	            <ul>
 	              <g:each var="c" in="${grailsApplication.controllerClasses}">
 	                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 	              </g:each>
 	            </ul>
 	        </div>
+	
+	        <div id="requestHeaders" class="dialog">
+				<h2>Request Headers:</h2>
+	            <ul>
+	              <g:each var="c" in="${request.headerNames}">
+	                    <li class="header">${c}: ${request.getHeader(c)}</li>
+	              </g:each>
+	            </ul>
+	        </div>	
 		</div>
     </body>
 </html>
