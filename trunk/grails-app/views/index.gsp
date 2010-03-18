@@ -1,110 +1,63 @@
 <html>
     <head>
-        <title>Welcome to Grails</title>
-		<meta name="layout" content="main" />
-		<style type="text/css" media="screen">
-
-			#nav {
-				margin-top:20px;
-				margin-left:30px;
-				width:228px;
-				float:left;
-
-			}
-			.homePagePanel * {
-				margin:0px;
-			}
-			.homePagePanel .panelBody ul {
-				list-style-type:none;
-				margin-bottom:10px;
-			}
-			.homePagePanel .panelBody h1 {
-				text-transform:uppercase;
-				font-size:1.1em;
-				margin-bottom:10px;
-			}
-			.homePagePanel .panelBody {
-			    background: url(images/leftnav_midstretch.png) repeat-y top;
-				margin:0px;
-				padding:15px;
-			}
-			.homePagePanel .panelBtm {
-			    background: url(images/leftnav_btm.png) no-repeat top;
-				height:20px;
-				margin:0px;
-			}
-
-			.homePagePanel .panelTop {
-			    background: url(images/leftnav_top.png) no-repeat top;
-				height:11px;
-				margin:0px;
-			}
-			h2 {
-				margin-top:15px;
-				margin-bottom:15px;
-				font-size:1.2em;
-			}
-			#pageBody {
-				margin-left:280px;
-				margin-right:20px;
-			}
-		</style>
+        <title>HTML5 Demos</title>
+		<meta name="layout" content="webkit" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<link rel="apple-touch-icon" href="./images/h5_webclip.png"/>
+		<link href="./images/startup.png" rel="apple-touch-startup-image" />	
+	
     </head>
     <body>
-		<div id="nav">
-			<div class="homePagePanel">
-				<div class="panelTop">
-
-				</div>
-				<div class="panelBody">
-					<h1>Application Status</h1>
-					<ul>
-						<li>App version: <g:meta name="app.version"></g:meta></li>
-						<li>Grails version: <g:meta name="app.grails.version"></g:meta></li>
-						<li>JVM version: ${System.getProperty('java.version')}</li>
-						<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-						<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-						<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-						<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-					</ul>
-					<h1>Installed Plugins</h1>
-					<ul>
-						<g:set var="pluginManager"
-						       value="${applicationContext.getBean('pluginManager')}"></g:set>
-
-						<g:each var="plugin" in="${pluginManager.allPlugins}">
-							<li>${plugin.name} - ${plugin.version}</li>
-						</g:each>
-
-					</ul>
-				</div>
-				<div class="panelBtm">
-				</div>
-			</div>
-
-
-		</div>
-		<div id="pageBody">
-	        <h1>Welcome to HTML5 Demos</h1>
-	        <p>This Grails Application showcases the core functionality available today in mobile browses like Apple's Safari for iPhone and other webkit-based browsers. Click on the links below to access each demo page. For your convenience, all request headers are printed below, too.</p>
-
-	        <div id="controllerList" class="dialog">
-				<h2>Demo Pages</h2>
-	            <ul>
-	              <g:each var="c" in="${grailsApplication.controllerClasses}">
-	                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-	              </g:each>
-	            </ul>
-	        </div>
-	
-	        <div id="requestHeaders" class="dialog">
-				<h2>Request Headers:</h2>
-	            <ul>
-	              <g:each var="c" in="${request.headerNames}">
-	                    <li class="header">${c}: ${request.getHeader(c)}</li>
-	              </g:each>
-	            </ul>
-	        </div>	
-		</div>
-    </body>
+		<div id="topbar">
+			<div id="title">HTML5 Demos</div>
+		</div>	
+		<div id="content">
+			<span class="graytitle">HTML5</span>
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>Examples demonstrating key concepts of HTML5 currently implemented.</p>
+				</li>
+				<li class="menu">
+					<a href="page.html"><span class="name">Canvas-Tag</span><span class="arrow"></span></a>					
+				</li>
+				<li class="menu">
+					<a href="page.html"><span class="name">Audio-Tag</span><span class="arrow"></span></a>
+				</li>			
+				<li class="menu">
+					<a href="page.html"><span class="name">Video-Tag</span><span class="arrow"></span></a>						
+				</li>									
+			</ul>
+			<span class="graytitle">Geolocation API</span>
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>This API allows you to locate the current user.</p>
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'detection')}"><span class="name">Detection</span><span class="arrow"></span></a>						
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'oneshot')}"><span class="name">One-Shot</span><span class="arrow"></span></a>						
+				</li>					
+			</ul>	
+			<span class="graytitle">Offline Web Applications</span>
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>Web Apps that work with internet connections.</p>
+				</li>
+				<li class="menu">
+					<a href="page.html"><span class="name">Offline</span><span class="arrow"></span></a>						
+				</li>	
+			</ul>
+			<span class="graytitle">Web SQL Database</span>
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>Use a client-side SQL database</p>
+				</li>
+				<li class="menu">
+					<a href="page.html"><span class="name">Detection</span><span class="arrow"></span></a>						
+				</li>	
+			</ul>								
+		</div>		
+	</body>	
 </html>

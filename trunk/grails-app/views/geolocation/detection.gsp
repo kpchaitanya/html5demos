@@ -1,20 +1,50 @@
 <html>
     <head>
-        <title>Geolocation - Detection Demo</title>
+        <title>HTML5</title>
 		<meta name="layout" content="webkit" />
 
 		<style type="text/css" media="screen">
 
 		</style>
+		
+		<script>
+		
+		(function my() {
+			
+			var $i = {};
+			
+			$i.init = function()
+			{
+				document.getElementById('message').innerHTML = $i.hasGeo() ? 'yes' : 'no';
+			};
+			
+			$i.hasGeo = function()
+			{
+				if (navigator.geolocation)
+					return true;
+				else
+					return false;
+			};
+			
+			document.addEventListener("DOMContentLoaded", $i.init, false);			
+		}).call();
+		
+		
+		</script>
     </head>
     <body>
 		
 		<div id="topbar">
+			<div id="title">Detection</div>
 		</div>
 		<div id="content">
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>Geolocation API: <span id="message"></span></p>
+				</li>									
+			</ul>			
 		</div>
 		<div id="footer">
-			<!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for our work :-) -->
 			<a class="noeffect" href="http://iwebkit.net">Powered by iWebKit</a>
 		</div>
     </body>

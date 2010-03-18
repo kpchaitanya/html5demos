@@ -5,4 +5,8 @@ class GeolocationController {
     def index = { }
 
 	def detection = { }
+	
+	def oneshot = {}
+	
+
 }
