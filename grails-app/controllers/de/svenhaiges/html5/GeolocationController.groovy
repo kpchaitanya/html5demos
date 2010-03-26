@@ -13,5 +13,7 @@ class GeolocationController {
 	def combined = { }
 	
 	def watch = { }
+	
+	def reverse = { }
 
 }
