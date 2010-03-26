@@ -7,6 +7,7 @@
 
 		</style>
 		
+		<script src="${resource(dir:'js',file:'modernizr-1.1.min.js')}" type="text/javascript"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAk6AH6TdjmGE76Sg-VZ_hzRSYyF8ynozO6JFpZ6CDrLxUILeJ4BRcA2RZA26oyr7iw013JXdKrPSuCw"></script>
 		
 		
@@ -15,13 +16,13 @@
 		(function my() {
 			
 			var $i = {};
-			$i.vars = {};
+			$i.vars = {first:true};
 			
 			$i.init = function()
 			{	
-				if ($i.hasGeo)
+				if (Modernizr.geolocation)
 				{
-					navigator.geolocation.getCurrentPosition($i.showLocation, $i.handleError, {timeout:30000, maximumAge:300000, enableHighAccuracy:true})
+					navigator.geolocation.getCurrentPosition($i.showLocation, $i.handleError, {timeout:30000, maximumAge:600000, enableHighAccuracy:false});
 				}
 				else
 					document.getElementById('message').innerHTML = 'Sorry, no Geolocation API available!';
@@ -29,10 +30,21 @@
 			
 			$i.showLocation = function(position)
 			{
-				document.getElementById('message').innerHTML = 'latitude: ' + position.coords.latitude + ' / longitude: ' + position.coords.longitude + ' / accuracy: ' + position.coords.accuracy + 'meters (acquired '+new Date(position.timestamp)+')';
+				var msg = 'latitude: ' + position.coords.latitude + ' / longitude: ' + position.coords.longitude + ' / accuracy: ' + position.coords.accuracy + 'meters (acquired '+new Date(position.timestamp)+')';
+				
+				if ($i.vars.first)
+				{
+					document.getElementById('message').innerHTML = msg;
+					$i.vars.first = false;
+					navigator.geolocation.getCurrentPosition($i.showLocation, $i.handleError, {timeout:120000, maximumAge:0, enableHighAccuracy:true});
+				}
+				else
+					document.getElementById('message').innerHTML += ('<br/><hr/>' + msg);
 				
 				var map = new google.maps.Map2(document.getElementById("map"));
 			    map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 13);
+			
+				
 			}
 			
 			$i.handleError = function(error)
@@ -56,14 +68,6 @@
 				msgNode.innerHTML +=  ' - error message: ' + error.message;
 			}
 			
-			$i.hasGeo = function()
-			{
-				if (navigator.geolocation)
-					return true;
-				else
-					return false;
-			};
-			
 			//document.addEventListener("DOMContentLoaded", $i.init, false);			
 			google.load("maps", "2.x");
 			google.setOnLoadCallback($i.init);			
@@ -75,7 +79,7 @@
     <body>
 		
 		<div id="topbar">
-			<div id="title">One-Shot</div>
+			<div id="title">Zunehmende Genauigkeit</div>
 		</div>
 		<div id="content">
 			<ul class="pageitem">
