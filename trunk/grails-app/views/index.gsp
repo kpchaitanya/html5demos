@@ -37,13 +37,25 @@
 					<a href="${createLink(controller:'geolocation', action:'detection')}"><span class="name">Detection</span><span class="arrow"></span></a>						
 				</li>
 				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'detection_modernizr')}"><span class="name">Detection (Modernizr)</span><span class="arrow"></span></a>						
+				</li>				
+				<li class="menu">
 					<a href="${createLink(controller:'geolocation', action:'oneshot')}"><span class="name">One-Shot</span><span class="arrow"></span></a>						
-				</li>					
+				</li>	
+				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'combined')}"><span class="name">Zunehmende Genauigkeit</span><span class="arrow"></span></a>						
+				</li>				
+				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'watch')}"><span class="name">Watch</span><span class="arrow"></span></a>						
+				</li>								
 			</ul>	
 			<span class="graytitle">Offline Web Applications</span>
 			<ul class="pageitem">
 				<li class="textbox">
-					<p>Web Apps that work with internet connections.</p>
+					<p>Web Apps that work without internet connection.</p>
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'offline', action:'detection')}"><span class="name">Online check</span><span class="arrow"></span></a>						
 				</li>
 				<li class="menu">
 					<a href="page.html"><span class="name">Offline</span><span class="arrow"></span></a>						
