@@ -47,7 +47,10 @@
 				</li>				
 				<li class="menu">
 					<a href="${createLink(controller:'geolocation', action:'watch')}"><span class="name">Watch</span><span class="arrow"></span></a>						
-				</li>								
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'geolocation', action:'reverse')}"><span class="name">Reverse Geocoding</span><span class="arrow"></span></a>						
+				</li>												
 			</ul>	
 			<span class="graytitle">Offline Web Applications</span>
 			<ul class="pageitem">
