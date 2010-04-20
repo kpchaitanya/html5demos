@@ -13,14 +13,26 @@
 			<div id="title">HTML5 Demos</div>
 		</div>	
 		<div id="content">
+			<span class="graytitle">Your User-Agent:</span>
+			<ul class="pageitem">
+				<li class="textbox">
+					<p>${request.getHeader('User-Agent')}</p>
+				</li>
+			</ul>			
 			<span class="graytitle">HTML5</span>
 			<ul class="pageitem">
 				<li class="textbox">
 					<p>Examples demonstrating key concepts of HTML5 currently implemented.</p>
 				</li>
 				<li class="menu">
-					<a href="page.html"><span class="name">Canvas-Tag</span><span class="arrow"></span></a>					
+					<a href="${createLink(controller:'html5', action:'canvas_basic')}"><span class="name">Basic Canvas</span><span class="arrow"></span></a>						
 				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'html5', action:'canvas_features')}"><span class="name">Canvas Features</span><span class="arrow"></span></a>						
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'html5', action:'canvas_flot')}"><span class="name">Canvas Charting</span><span class="arrow"></span></a>						
+				</li>								
 				<li class="menu">
 					<a href="page.html"><span class="name">Audio-Tag</span><span class="arrow"></span></a>
 				</li>			
@@ -64,14 +76,20 @@
 					<a href="page.html"><span class="name">Offline</span><span class="arrow"></span></a>						
 				</li>	
 			</ul>
-			<span class="graytitle">Web SQL Database</span>
+			<span class="graytitle">Web SQL Database & Web Storage</span>
 			<ul class="pageitem">
-				<li class="textbox">
-					<p>Use a client-side SQL database</p>
+				<li class="menu">
+					<a href="${createLink(controller:'storage', action:'detection')}"><span class="name">Storage &amp; SQL Detection</span><span class="arrow"></span></a>						
 				</li>
 				<li class="menu">
-					<a href="page.html"><span class="name">Detection</span><span class="arrow"></span></a>						
-				</li>	
+					<a href="${createLink(controller:'storage', action:'sessionstorage')}"><span class="name">sessionStorage</span><span class="arrow"></span></a>						
+				</li>				
+				<li class="menu">
+					<a href="${createLink(controller:'storage', action:'localstorage')}"><span class="name">localStorage</span><span class="arrow"></span></a>						
+				</li>
+				<li class="menu">
+					<a href="${createLink(controller:'storage', action:'storageevent')}"><span class="name">StorageEvent</span><span class="arrow"></span></a>						
+				</li>					
 			</ul>								
 		</div>		
 	</body>	

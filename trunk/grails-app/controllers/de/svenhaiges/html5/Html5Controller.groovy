@@ -2,11 +2,10 @@ package de.svenhaiges.html5
 
 class Html5Controller {
 
-    def index = { }
+	def canvas_basic = { }
+	
+	def canvas_features = { }	
+	
+	def canvas_flot = { }
 
-	def audio = {}
-	
-	def video = {}
-	
-	def canvas = {}
 }
