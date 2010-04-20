@@ -1,0 +1,17 @@
+<grails>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>resources</resource>
+    <resource>UrlMappings</resource>
+    <resource>de.svenhaiges.html5.GeolocationController</resource>
+    <resource>de.svenhaiges.html5.Html5Controller</resource>
+    <resource>de.svenhaiges.html5.JsdbController</resource>
+    <resource>de.svenhaiges.html5.OfflineController</resource>
+  </resources>
+  <plugins>
+    <plugin>TomcatGrailsPlugin</plugin>
+  </plugins>
+</grails>
