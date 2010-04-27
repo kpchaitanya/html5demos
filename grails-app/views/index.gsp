@@ -89,7 +89,10 @@
 				</li>
 				<li class="menu">
 					<a href="${createLink(controller:'storage', action:'storageevent')}"><span class="name">StorageEvent</span><span class="arrow"></span></a>						
-				</li>					
+				</li>	
+				<li class="menu">
+					<a href="${createLink(controller:'sql', action:'notes')}"><span class="name">SQL Notes</span><span class="arrow"></span></a>						
+				</li>								
 			</ul>								
 		</div>		
 	</body>	
