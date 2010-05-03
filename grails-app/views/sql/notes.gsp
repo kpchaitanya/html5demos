@@ -197,7 +197,7 @@
 					var db = openDatabase('notes', '1.0', 'Offline Notes Storage', 5*1024*1024);
 				
 					db.transaction(function(t){
-						t.executeSql('CREATE TABLE IF NOT EXISTS notes (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, note TEXT, date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP);');					
+						t.executeSql('CREATE TABLE IF NOT EXISTS notes (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, note TEXT, date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP);');						
 					}, $i.errorStatementCallback);
 					
 					//if (db.changeVersion)
