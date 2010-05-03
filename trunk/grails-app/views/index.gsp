@@ -93,6 +93,9 @@
 				<li class="menu">
 					<a href="${createLink(controller:'sql', action:'notes')}"><span class="name">SQL Notes</span><span class="arrow"></span></a>						
 				</li>								
+				<li class="menu">
+					<a href="${createLink(controller:'sql', action:'migrate')}"><span class="name">Schema Migration</span><span class="arrow"></span></a>						
+				</li>				
 			</ul>								
 		</div>		
 	</body>	

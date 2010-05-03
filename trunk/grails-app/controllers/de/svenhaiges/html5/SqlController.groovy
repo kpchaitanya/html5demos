@@ -5,4 +5,6 @@ class SqlController {
     def index = { }
 
 	def notes = { }
+	
+	def migrate = { }
 }
