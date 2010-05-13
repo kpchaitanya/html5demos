@@ -70,10 +70,10 @@
 					<p>Web Apps that work without internet connection.</p>
 				</li>
 				<li class="menu">
-					<a href="${createLink(controller:'offline', action:'detection')}"><span class="name">Online check</span><span class="arrow"></span></a>						
+					<a href="${createLink(controller:'offline', action:'detection')}"><span class="name">Online/Offline check</span><span class="arrow"></span></a>						
 				</li>
 				<li class="menu">
-					<a href="page.html"><span class="name">Offline</span><span class="arrow"></span></a>						
+					<a href="${createLink(controller:'offline', action:'sample')}"><span class="name">Offline Example</span><span class="arrow"></span></a>						
 				</li>	
 			</ul>
 			<span class="graytitle">Web SQL Database & Web Storage</span>

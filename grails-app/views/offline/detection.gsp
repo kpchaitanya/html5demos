@@ -16,13 +16,18 @@
 			
 			$i.init = function()
 			{	
+				window.addEventListener("online", function() {
+					alert("We're now online");
+				}, true);
+
+				window.addEventListener("offline", function() {
+				  alert("We're now offline");
+				}, true);				
+				
 				document.getElementById('message').innerHTML = (navigator.onLine) ? 'online' : 'offline';
 			};
 	
-		
-			
-	
-			
+
 			document.addEventListener("DOMContentLoaded", $i.init, false);			
 		}).call();
 		
@@ -32,17 +37,15 @@
     <body>
 		
 		<div id="topbar">
-			<div id="title">One-Shot</div>
+			<div id="title">Online/Offline</div>
 		</div>
 		<div id="content">
 			<ul class="pageitem">
 				<li class="textbox">
 					<p>Your browser is <span id="message"></span></p>
-				</li>									
+				</li>
+														
 			</ul>			
-		</div>
-		<div id="footer">
-			<a class="noeffect" href="http://iwebkit.net">Powered by iWebKit</a>
 		</div>
     </body>
 </html>
