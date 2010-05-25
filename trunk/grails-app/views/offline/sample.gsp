@@ -3,7 +3,7 @@
     <head>
         <title>HTML5</title>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-status-bar-style content="black"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<link rel="apple-touch-startup-image" href="${resource(dir:'images',file:'startup.png')}" />
 		<link rel="apple-touch-icon" href="${resource(dir:'images',file:'h5_webclip.png')}"/>
 
@@ -28,6 +28,15 @@
 					alert('No applicationCache!');
 					return;
 				}
+				
+				//online offline - aktuell nicht unterstuetzt
+				window.addEventListener("online", function() {
+				  alert('Du bist online!');
+				}, true);
+
+				window.addEventListener("offline", function() {
+				  alert('Du bist offline!');
+				}, true);				
 				
 				
 				

@@ -7,14 +7,12 @@ class OfflineController {
 	}
 	
 	def manifest = {
-
 		def pathList = []
 		new File("./web-app/images").eachFile {
-			if (!it.name.startsWith('.'))
+			if (!it.name.startsWith('.') && !it.directory)
 				pathList << 'html5' + it.path[1..-1]
 			}
 			render(contentType:'text/cache-manifest', text:pathList.join('\n')); 
-	
 	}
 
 	def detection = { 
