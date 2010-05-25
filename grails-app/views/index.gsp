@@ -34,11 +34,14 @@
 					<a href="${createLink(controller:'html5', action:'canvas_flot')}"><span class="name">Canvas Charting</span><span class="arrow"></span></a>						
 				</li>								
 				<li class="menu">
-					<a href="page.html"><span class="name">Audio-Tag</span><span class="arrow"></span></a>
+					<a href="${createLink(controller:'html5', action:'audio')}"><span class="name">Audio</span><span class="arrow"></span></a>						
 				</li>			
 				<li class="menu">
-					<a href="page.html"><span class="name">Video-Tag</span><span class="arrow"></span></a>						
-				</li>									
+					<a href="${createLink(controller:'html5', action:'video')}"><span class="name">Video</span><span class="arrow"></span></a>						
+				</li>	
+				<li class="menu">
+					<a href="${createLink(controller:'html5', action:'inputtypes')}"><span class="name">Input Types</span><span class="arrow"></span></a>						
+				</li>												
 			</ul>
 			<span class="graytitle">Geolocation API</span>
 			<ul class="pageitem">
