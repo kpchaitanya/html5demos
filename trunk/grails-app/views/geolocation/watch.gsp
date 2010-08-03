@@ -7,7 +7,9 @@
 
 		</style>
 		
-		<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAk6AH6TdjmGE76Sg-VZ_hzRSYyF8ynozO6JFpZ6CDrLxUILeJ4BRcA2RZA26oyr7iw013JXdKrPSuCw"></script>
+		<script type="text/javascript"
+		    src="http://maps.google.com/maps/api/js?sensor=true">
+		</script>
 		
 		
 		<script>
@@ -38,7 +40,7 @@
 							$i.vars.watchID = navigator.geolocation.watchPosition($i.showLocation, $i.handleError, {timeout:30000, maximumAge:300000, enableHighAccuracy:true});							
 							this.value = 'stop watching';
 						}
-					});
+					}, true);
 				}
 				else
 					document.getElementById('message').innerHTML = 'Sorry, no Geolocation API available!';
@@ -50,8 +52,13 @@
 				document.getElementById('message1').innerHTML = $i.vars.callbacks;
 				if (!$i.vars.map)
 				{
-					$i.vars.map = new google.maps.Map2(document.getElementById("map"));
-					$i.vars.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 17);					
+				    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				    var myOptions = {
+				      zoom: 17,
+				      center: latlng,
+				      mapTypeId: google.maps.MapTypeId.ROADMAP
+				    };
+				    $i.vars.map = new google.maps.Map(document.getElementById("map"), myOptions);					
 				}
 				
 				if ($i.vars.lastUpdate)
@@ -66,12 +73,14 @@
 				document.getElementById('message2').innerHTML = $i.vars.usedCallbacks;
 			
 				// Create our "tiny" marker icon
-				var blueIcon = new GIcon(G_DEFAULT_ICON);
-				blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png";
-
-				// Set up our GMarkerOptions object
-				markerOptions = { icon:blueIcon };
-			  	$i.vars.map.addOverlay(new GMarker(new GLatLng(position.coords.latitude, position.coords.longitude), markerOptions));
+			  var image = 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png';
+			  var markerLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			  var beachMarker = new google.maps.Marker({
+			      position: markerLatLng,
+			      map: $i.vars.map,
+			      icon: image
+			  });
+			
 			  
 			}
 			
@@ -103,9 +112,7 @@
 					return false;
 			};
 			
-			//document.addEventListener("DOMContentLoaded", $i.init, false);			
-			google.load("maps", "2.x");
-			google.setOnLoadCallback($i.init);			
+			document.addEventListener("DOMContentLoaded", $i.init, false);						
 		}).call();
 		
 		

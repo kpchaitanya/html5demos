@@ -7,7 +7,9 @@
 
 		</style>
 		
-		<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAk6AH6TdjmGE76Sg-VZ_hzRSYyF8ynozO6JFpZ6CDrLxUILeJ4BRcA2RZA26oyr7iw013JXdKrPSuCw"></script>
+		<script type="text/javascript"
+		    src="http://maps.google.com/maps/api/js?sensor=true">
+		</script>
 		
 		
 		<script>
@@ -32,26 +34,24 @@
 				document.getElementById('message').innerHTML = 'latitude: ' + position.coords.latitude + ' / longitude: ' + position.coords.longitude + ' / accuracy: ' + position.coords.accuracy + 'meters (acquired '+new Date(position.timestamp)+')';
 				
 				
-				var latlon = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				var	geocoder = new GClientGeocoder();
-				geocoder.getLocations(latlon, $i.showAddress);
+				var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				var	geocoder = new google.maps.Geocoder();
+				
+			    geocoder.geocode({'latLng': latlng}, function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+			        if (results[0]) { 
+			          $i.showAddress(results[0]) //0 = most accurate
+			        }
+			      } else {
+			        	alert("Geocoder failed due to: " + status);
+			      }
+			    });				
+	
 			}
 			
-			$i.showAddress = function(response)
+			$i.showAddress = function(result)
 			{
-				if (!response || response.Status.code != 200) {
-				    alert("Status Code:" + response.Status.code);
-				 } else {
-				 	var place = response.Placemark[0];
-				    document.getElementById('message').innerHTML = '<br/><hr/>' +
-				    '<b>orig latlng:</b>' + response.name + '<br/>' +
-				    '<b>latlng:</b>' + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + '<br>' +
-				    '<b>Status Code:</b>' + response.Status.code + '<br>' +
-				    '<b>Status Request:</b>' + response.Status.request + '<br>' +
-				    '<b>Address:</b>' + place.address + '<br>' +
-				    '<b>Accuracy:</b>' + place.AddressDetails.Accuracy + '<br>' +
-				    '<b>Country code:</b> ' + place.AddressDetails.Country.CountryNameCode;
-				  }				
+				    document.getElementById('message').innerHTML = '<br/><hr/>' + '<b>latlng: </b>' + result.geometry.location + '<br/>' +  '<b>Formatted Address:</b>' + result.formatted_address + '<br>';
 			}
 			
 			$i.handleError = function(error)
@@ -83,9 +83,7 @@
 					return false;
 			};
 			
-			//document.addEventListener("DOMContentLoaded", $i.init, false);			
-			google.load("maps", "2.x");
-			google.setOnLoadCallback($i.init);			
+			document.addEventListener("DOMContentLoaded", $i.init, false);						
 		}).call();
 		
 		

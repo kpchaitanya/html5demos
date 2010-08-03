@@ -7,8 +7,9 @@
 
 		</style>
 		
-		<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAk6AH6TdjmGE76Sg-VZ_hzRSYyF8ynozO6JFpZ6CDrLxUILeJ4BRcA2RZA26oyr7iw013JXdKrPSuCw"></script>
-		
+		<script type="text/javascript"
+		    src="http://maps.google.com/maps/api/js?sensor=true">
+		</script>	
 		
 		<script>
 			
@@ -31,8 +32,13 @@
 			{
 				document.getElementById('message').innerHTML = 'latitude: ' + position.coords.latitude + ' / longitude: ' + position.coords.longitude + ' / accuracy: ' + position.coords.accuracy + 'meters (acquired '+new Date(position.timestamp)+')';
 				
-				var map = new google.maps.Map2(document.getElementById("map"));
-			    map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 13);
+			    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			    var myOptions = {
+			      zoom: 13,
+			      center: latlng,
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    };
+			    var map = new google.maps.Map(document.getElementById("map"), myOptions);				
 			}
 			
 			$i.handleError = function(error)
@@ -64,9 +70,7 @@
 					return false;
 			};
 			
-			//document.addEventListener("DOMContentLoaded", $i.init, false);			
-			google.load("maps", "2.x");
-			google.setOnLoadCallback($i.init);			
+			document.addEventListener("DOMContentLoaded", $i.init, false);						
 		}).call();
 		
 		
