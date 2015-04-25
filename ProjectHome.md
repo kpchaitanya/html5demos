@@ -1,0 +1,1 @@
+This is a project for HTML5 demos, targeted at mobile browsers.
